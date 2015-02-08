@@ -9,8 +9,17 @@
 @import UIKit;
 
 #import "LYKStyle.h"
-#import "Layout.h"
 
 @interface LYKStyle ()
-@property (nonatomic, readonly) css_node_t *CSSNode;
+@property (nonatomic, readonly) CGRect layoutedFrame;
+
+- (void)prepareForLayout;
+- (void)performLayout;
+
+- (void)setNumberOfChildren:(NSUInteger)numberOfChildren;
+
+- (void)setMeasureBlock:(CGSize (^)(CGFloat width))block;
+- (void)setGetChildBlock:(LYKStyle *(^)(NSUInteger idx))block;
+
+- (void)setChangeHandler:(void (^)(void))handler;
 @end

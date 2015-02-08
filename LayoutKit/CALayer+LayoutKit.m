@@ -7,12 +7,19 @@
 //
 
 #import "CALayer+LayoutKit.h"
+#import "CALayer_LYKInternal.h"
 
 #import "LYKUtils.h"
+#import "LYKStyle.h"
 
 @import ObjectiveC.runtime;
 
 static void *kLayoutManagerKey;
+static void *kStyleKey;
+
+@interface CALayer ()
+@property (nonatomic, strong, readwrite, setter=lyk_setStyle:) LYKStyle *lyk_style;
+@end
 
 @implementation CALayer (LayoutKit)
 
@@ -39,6 +46,22 @@ static void *kLayoutManagerKey;
 - (id<LYKLayoutManager>)lyk_layoutManager
 {
     return objc_getAssociatedObject(self, &kLayoutManagerKey);
+}
+
+- (void)lyk_setStyle:(LYKStyle *)style
+{
+    objc_setAssociatedObject(self, &kStyleKey, style, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setNeedsLayout];
+}
+
+- (LYKStyle *)lyk_style
+{
+    LYKStyle *style = objc_getAssociatedObject(self, &kStyleKey);
+    if (style == nil) {
+        style = [LYKStyle new];
+        self.lyk_style = style;
+    }
+    return style;
 }
 
 - (void)lyk_layoutSublayers

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C21265D1A87B19D00BBAC46 /* LYKTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C21265C1A87B19D00BBAC46 /* LYKTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C21265F1A87B20600BBAC46 /* CALayer_LYKInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C21265E1A87B20600BBAC46 /* CALayer_LYKInternal.h */; };
 		2C689E3B1A869D0F002A189A /* LayoutKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C689E3A1A869D0F002A189A /* LayoutKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C689E411A869D0F002A189A /* LayoutKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C689E351A869D0F002A189A /* LayoutKit.framework */; };
 		2C689E481A869D0F002A189A /* LayoutKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C689E471A869D0F002A189A /* LayoutKitTests.m */; };
@@ -17,7 +19,7 @@
 		2C689E9A1A869FB2002A189A /* LYKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C689E981A869FB2002A189A /* LYKUtils.m */; };
 		2C689E9D1A86C044002A189A /* LYKFlexBoxLayoutManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C689E9B1A86C044002A189A /* LYKFlexBoxLayoutManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C689E9E1A86C044002A189A /* LYKFlexBoxLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C689E9C1A86C044002A189A /* LYKFlexBoxLayoutManager.m */; };
-		2C689EA11A86CB5A002A189A /* LYKStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C689E9F1A86CB5A002A189A /* LYKStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C689EA11A86CB5A002A189A /* LYKStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C689E9F1A86CB5A002A189A /* LYKStyle.h */; };
 		2C689EA21A86CB5A002A189A /* LYKStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C689EA01A86CB5A002A189A /* LYKStyle.m */; };
 		2C689EA51A86CB92002A189A /* UIView+LayoutKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C689EA31A86CB92002A189A /* UIView+LayoutKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C689EA61A86CB92002A189A /* UIView+LayoutKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C689EA41A86CB92002A189A /* UIView+LayoutKit.m */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C21265C1A87B19D00BBAC46 /* LYKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYKTypes.h; sourceTree = "<group>"; };
+		2C21265E1A87B20600BBAC46 /* CALayer_LYKInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALayer_LYKInternal.h; sourceTree = "<group>"; };
 		2C689E351A869D0F002A189A /* LayoutKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LayoutKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C689E391A869D0F002A189A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C689E3A1A869D0F002A189A /* LayoutKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutKit.h; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				2C689E3A1A869D0F002A189A /* LayoutKit.h */,
+				2C21265C1A87B19D00BBAC46 /* LYKTypes.h */,
 				2C689E8F1A869E0A002A189A /* LYKLayoutManager.h */,
 				2C689E931A869E86002A189A /* CALayer+LayoutKit.h */,
 				2C689E941A869E86002A189A /* CALayer+LayoutKit.m */,
@@ -108,8 +113,6 @@
 				2C689E9C1A86C044002A189A /* LYKFlexBoxLayoutManager.m */,
 				2C689EA31A86CB92002A189A /* UIView+LayoutKit.h */,
 				2C689EA41A86CB92002A189A /* UIView+LayoutKit.m */,
-				2C689E9F1A86CB5A002A189A /* LYKStyle.h */,
-				2C689EA01A86CB5A002A189A /* LYKStyle.m */,
 				2C689EB11A86CF7E002A189A /* Internal */,
 				2C689E381A869D0F002A189A /* Supporting Files */,
 			);
@@ -161,7 +164,10 @@
 		2C689EB11A86CF7E002A189A /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				2C21265E1A87B20600BBAC46 /* CALayer_LYKInternal.h */,
 				2C689EAF1A86CF69002A189A /* LYKStyle_Internal.h */,
+				2C689E9F1A86CB5A002A189A /* LYKStyle.h */,
+				2C689EA01A86CB5A002A189A /* LYKStyle.m */,
 				2C689E971A869FB2002A189A /* LYKUtils.h */,
 				2C689E981A869FB2002A189A /* LYKUtils.m */,
 			);
@@ -175,9 +181,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C21265F1A87B20600BBAC46 /* CALayer_LYKInternal.h in Headers */,
 				2C689E951A869E86002A189A /* CALayer+LayoutKit.h in Headers */,
 				2C689EA51A86CB92002A189A /* UIView+LayoutKit.h in Headers */,
 				2C689EB01A86CF69002A189A /* LYKStyle_Internal.h in Headers */,
+				2C21265D1A87B19D00BBAC46 /* LYKTypes.h in Headers */,
 				2C689EA11A86CB5A002A189A /* LYKStyle.h in Headers */,
 				2C689E991A869FB2002A189A /* LYKUtils.h in Headers */,
 				2C689EAE1A86CCBA002A189A /* Layout.h in Headers */,

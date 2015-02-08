@@ -14,9 +14,9 @@ FOUNDATION_EXPORT double LayoutKitVersionNumber;
 //! Project version string for LayoutKit.
 FOUNDATION_EXPORT const unsigned char LayoutKitVersionString[];
 
+#import <LayoutKit/LYKTypes.h>
 #import <LayoutKit/LYKLayoutManager.h>
 #import <LayoutKit/CALayer+LayoutKit.h>
 #import <LayoutKit/UIView+LayoutKit.h>
-#import <LayoutKit/LYKStyle.h>
 #import <LayoutKit/LYKFlexBoxLayoutManager.h>
 #import <LayoutKit/LYKLabel.h>

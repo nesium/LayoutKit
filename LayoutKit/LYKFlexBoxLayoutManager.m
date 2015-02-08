@@ -9,72 +9,39 @@
 #import "LYKFlexBoxLayoutManager.h"
 
 #import "LYKStyle_Internal.h"
-#import "UIView+LayoutKit.h"
-
-static css_node_t *getChild(void *context, int i);
-static bool isDirty(void *context);
-static css_dim_t measure(void *context, float width);
-
-static css_node_t *getChild(void *context, int i)
-{
-    CALayer *layer = (__bridge CALayer *)context;
-    CALayer *sublayer = layer.sublayers[i];
-    UIView *view = sublayer.delegate;
-    view.lyk_style.CSSNode->context = (__bridge void *)sublayer;
-    view.lyk_style.CSSNode->is_dirty = isDirty;
-    
-    if (view.lyk_style.display == LYKCSSDisplayInline) {
-        view.lyk_style.CSSNode->measure = measure;
-    }
-    return view.lyk_style.CSSNode;
-}
-
-static bool isDirty(void *context)
-{
-    return true;
-}
-
-static css_dim_t measure(void *context, float width)
-{
-    CALayer *layer = (__bridge CALayer *)context;
-    UIView *view = layer.delegate;
-    
-    css_dim_t dim;
-    dim.dimensions[CSS_WIDTH] = width;
-    CGSize requiredSize = [view sizeThatFits:(CGSize){width, CGFLOAT_MAX}];
-    dim.dimensions[CSS_HEIGHT] = requiredSize.height;
-    return dim;
-}
+#import "CALayer+LayoutKit.h"
+#import "CALayer_LYKInternal.h"
 
 @implementation LYKFlexBoxLayoutManager
 
 #pragma mark - LYKLayoutManager Methods
 
-- (void)invalidateLayoutOfLayer:(CALayer *)layer
-{
-    UIView *view = layer.delegate;
-    view.lyk_style.CSSNode->context = (__bridge void *)layer;
-    view.lyk_style.CSSNode->get_child = getChild;
-    view.lyk_style.CSSNode->is_dirty = isDirty;
-    
-    if (view.lyk_style.display == LYKCSSDisplayInline) {
-        view.lyk_style.CSSNode->measure = measure;
-    }
-}
+- (void)invalidateLayoutOfLayer:(CALayer *)layer {}
 
 - (void)layoutSublayersOfLayer:(CALayer *)layer
 {
-    UIView *view = layer.delegate;
-    view.lyk_style.CSSNode->children_count = (int)layer.sublayers.count;
-    
     __block void (__weak ^weakPrepareLayerForLayout)(CALayer *);
+    __weak __typeof(self)weakSelf = self;
+    __weak CALayer *weakRootLayer = layer;
     
     void (^prepareLayerForLayout)(CALayer *) = ^(CALayer *theLayer) {
-        UIView *theView = theLayer.delegate;
-        theView.lyk_style.CSSNode->layout.position[CSS_TOP] = 0.0f;
-        theView.lyk_style.CSSNode->layout.position[CSS_LEFT] = 0.0f;
-        theView.lyk_style.CSSNode->layout.dimensions[CSS_WIDTH] = CSS_UNDEFINED;
-        theView.lyk_style.CSSNode->layout.dimensions[CSS_HEIGHT] = CSS_UNDEFINED;
+        __weak CALayer *weakLayer = theLayer;
+        
+        [theLayer.lyk_style setNumberOfChildren:theLayer.sublayers.count];
+        
+        [theLayer.lyk_style prepareForLayout];
+        
+        [theLayer.lyk_style setMeasureBlock:^CGSize(CGFloat width) {
+            return [weakSelf preferredSizeOfLayer:weakLayer width:width];
+        }];
+        
+        [theLayer.lyk_style setGetChildBlock:^LYKStyle *(NSUInteger idx) {
+            return [weakSelf styleForSublayerAtIndex:idx parentLayer:weakLayer];
+        }];
+        
+        [theLayer.lyk_style setChangeHandler:^{
+            [weakSelf handleChangeInLayer:weakLayer rootLayer:weakRootLayer];
+        }];
         
         for (CALayer *sublayer in theLayer.sublayers) {
             weakPrepareLayerForLayout(sublayer);
@@ -86,12 +53,7 @@ static css_dim_t measure(void *context, float width)
     __block void (__weak ^weakApplyLayoutToLayer)(CALayer *);
     
     void (^applyLayoutToLayer)(CALayer *) = ^(CALayer *theLayer) {
-        UIView *theView = theLayer.delegate;
-        theView.frame = (CGRect){
-        	theView.lyk_style.position.left,
-            theView.lyk_style.position.top,
-            theView.lyk_style.size
-        };
+        theLayer.frame = theLayer.lyk_style.layoutedFrame;
         
         for (CALayer *sublayer in theLayer.sublayers) {
             weakApplyLayoutToLayer(sublayer);
@@ -101,7 +63,29 @@ static css_dim_t measure(void *context, float width)
     weakApplyLayoutToLayer = applyLayoutToLayer;
     
     prepareLayerForLayout(layer);
-    layoutNode(view.lyk_style.CSSNode, view.lyk_style.CSSNode->style.dimensions[CSS_WIDTH]);
+    [layer.lyk_style performLayout];
     applyLayoutToLayer(layer);
+}
+
+
+
+#pragma mark - Private Methods
+
+- (CGSize)preferredSizeOfLayer:(CALayer *)layer width:(CGFloat)width
+{
+    UIView *view = layer.delegate;
+    return [view sizeThatFits:(CGSize){width, CGFLOAT_MAX}];
+}
+
+- (LYKStyle *)styleForSublayerAtIndex:(NSUInteger)idx parentLayer:(CALayer *)parentLayer
+{
+    CALayer *sublayer = parentLayer.sublayers[idx];
+    return sublayer.lyk_style;
+}
+
+- (void)handleChangeInLayer:(CALayer *)childLayer rootLayer:(CALayer *)rootLayer
+{
+    // TODO: Improve invalidation
+    [rootLayer setNeedsLayout];
 }
 @end

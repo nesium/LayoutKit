@@ -18,20 +18,72 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self test1];
+    [self test2];
+}
+
+- (void)test1
+{
     UIView *containerView = [UIView new];
     containerView.backgroundColor = [UIColor lightGrayColor];
     containerView.layer.lyk_layoutManager = [LYKFlexBoxLayoutManager new];
-    containerView.lyk_style.size = (CGSize){300.0f, 100.0f};
-    containerView.lyk_style.position = (LYKCSSEdgeInsets){50.0f, 10.0f, 0.0f, 0.0f};
-    containerView.lyk_style.padding = (LYKCSSEdgeInsets){5.0f, 10.0f, 5.0f, 10.0f};
-    containerView.lyk_style.contentJustification = LYKCSSJustificationSpaceAround;
+    containerView.lyk_size = (CGSize){300.0f, 100.0f};
+    containerView.lyk_position = (LYKCSSEdgeInsets){50.0f, 10.0f, 0.0f, 0.0f};
+    containerView.lyk_padding = (LYKCSSEdgeInsets){5.0f, 10.0f, 5.0f, 10.0f};
+    containerView.lyk_contentJustification = LYKCSSJustificationSpaceAround;
     [self.view addSubview:containerView];
     
     for (NSUInteger idx = 0; idx < 3; idx++) {
         UIView *subview = [UIView new];
         subview.backgroundColor = [UIColor redColor];
-        subview.lyk_style.size = (CGSize){60.0f, NAN};
-        subview.lyk_style.selfAlignment = LYKCSSAlignStretch;
+        subview.lyk_size = (CGSize){60.0f, NAN};
+        subview.lyk_selfAlignment = LYKCSSAlignStretch;
+        [containerView addSubview:subview];
+    }
+    
+    UIView *parent = containerView.subviews[1];
+    parent.lyk_direction = LYKCSSFlexDirectionColumn;
+    parent.lyk_padding = (LYKCSSEdgeInsets){3.0f, 3.0f, 1.0f, 3.0f};
+    parent.lyk_selfAlignment = LYKCSSAlignStart;
+    
+    for (NSUInteger idx = 0; idx < 5; idx++) {
+        UIView *subview = [UIView new];
+        subview.backgroundColor = [UIColor greenColor];
+        subview.lyk_size = (CGSize){NAN, 10.0f};
+        subview.lyk_margin = (LYKCSSEdgeInsets){0.0f, 0.0f, 2.0f, 0.0f};
+        subview.lyk_selfAlignment = LYKCSSAlignStretch;
+        [parent addSubview:subview];
+    }
+    
+    UILabel *label = [UILabel new];
+    label.text = @"Hello World";
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.backgroundColor = [UIColor yellowColor];
+    label.lyk_selfAlignment = LYKCSSAlignCenter;
+    label.lyk_display = LYKCSSDisplayInline;
+    label.lyk_size = (CGSize){50.0f, NAN};
+    [containerView addSubview:label];
+}
+
+- (void)test2
+{
+    UIView *containerView = [UIView new];
+    containerView.backgroundColor = [UIColor lightGrayColor];
+    containerView.layer.lyk_layoutManager = [LYKFlexBoxLayoutManager new];
+    containerView.lyk_direction = LYKCSSFlexDirectionColumn;
+    containerView.lyk_display = LYKCSSDisplayInline;
+    containerView.lyk_size = (CGSize){NAN, NAN};
+    containerView.lyk_position = (LYKCSSEdgeInsets){180.0f, 10.0f, 0.0f, 0.0f};
+    containerView.lyk_padding = (LYKCSSEdgeInsets){5.0f, 10.0f, 5.0f, 10.0f};
+    containerView.lyk_contentJustification = LYKCSSJustificationStart;
+    [self.view addSubview:containerView];
+    
+    for (NSUInteger idx = 0; idx < 3; idx++) {
+        UIView *subview = [UIView new];
+        subview.backgroundColor = [UIColor redColor];
+        subview.lyk_size = (CGSize){60.0f, 30.0f};
+        subview.lyk_margin = (LYKCSSEdgeInsets){0.0f, 0.0f, 10.0f, 0.0f};
         [containerView addSubview:subview];
     }
     
@@ -40,9 +92,9 @@
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.backgroundColor = [UIColor yellowColor];
-    label.lyk_style.selfAlignment = LYKCSSAlignCenter;
-    label.lyk_style.display = LYKCSSDisplayInline;
-    label.lyk_style.size = (CGSize){50.0f, NAN};
+    label.lyk_selfAlignment = LYKCSSAlignCenter;
+    label.lyk_display = LYKCSSDisplayInline;
+    label.lyk_size = (CGSize){50.0f, NAN};
     [containerView addSubview:label];
 }
 @end

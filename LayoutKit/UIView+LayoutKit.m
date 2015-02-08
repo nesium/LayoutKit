@@ -8,36 +8,138 @@
 
 #import "UIView+LayoutKit.h"
 
+#import "CALayer_LYKInternal.h"
 #import "LYKStyle.h"
-
-@import ObjectiveC.runtime;
-
-static void *kStyleKey;
-
-@interface UIView ()
-@property (nonatomic, strong, readwrite, setter=lyk_setStyle:) LYKStyle *lyk_style;
-@end
 
 @implementation UIView (LayoutKit)
 
-- (void)lyk_setStyle:(LYKStyle *)style
+- (void)lyk_setDisplay:(LYKCSSDisplay)display
 {
-    objc_setAssociatedObject(self, &kStyleKey, style, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self.layer setNeedsLayout];
+    self.layer.lyk_style.display = display;
 }
 
-- (LYKStyle *)lyk_style
+- (LYKCSSDisplay)lyk_display
 {
-    LYKStyle *style = objc_getAssociatedObject(self, &kStyleKey);
-    if (style == nil) {
-        style = [LYKStyle new];
-        self.lyk_style = style;
-    }
-    return style;
+    return self.layer.lyk_style.display;
 }
 
-- (id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event
+- (void)lyk_setDirection:(LYKCSSFlexDirection)direction
 {
-    return nil;
+    self.layer.lyk_style.direction = direction;
+}
+
+- (LYKCSSFlexDirection)lyk_direction
+{
+    return self.layer.lyk_style.direction;
+}
+
+- (void)lyk_setContentJustification:(LYKCSSJustification)contentJustification
+{
+    self.layer.lyk_style.contentJustification = contentJustification;
+}
+
+- (LYKCSSJustification)lyk_contentJustification
+{
+    return self.layer.lyk_style.contentJustification;
+}
+
+- (void)lyk_setItemsAlignment:(LYKCSSAlign)itemsAlignment
+{
+    self.layer.lyk_style.itemsAlignment = itemsAlignment;
+}
+
+- (LYKCSSAlign)lyk_itemsAlignment
+{
+    return self.layer.lyk_style.itemsAlignment;
+}
+
+- (void)lyk_setSelfAlignment:(LYKCSSAlign)selfAlignment
+{
+    self.layer.lyk_style.selfAlignment = selfAlignment;
+}
+
+- (LYKCSSAlign)lyk_selfAlignment
+{
+    return self.layer.lyk_style.selfAlignment;
+}
+
+- (void)lyk_setPositionType:(LYKCSSPositionType)positionType
+{
+    self.layer.lyk_style.positionType = positionType;
+}
+
+- (LYKCSSPositionType)lyk_positionType
+{
+    return self.layer.lyk_style.positionType;
+}
+
+- (void)lyk_setWrap:(LYKCSSWrap)wrap
+{
+    self.layer.lyk_style.wrap = wrap;
+}
+
+- (LYKCSSWrap)lyk_wrap
+{
+    return self.layer.lyk_style.wrap;
+}
+
+- (void)lyk_setFlex:(CGFloat)flex
+{
+    self.layer.lyk_style.flex = flex;
+}
+
+- (CGFloat)lyk_flex
+{
+    return self.layer.lyk_style.flex;
+}
+
+- (void)lyk_setMargin:(LYKCSSEdgeInsets)margin
+{
+    self.layer.lyk_style.margin = margin;
+}
+
+- (LYKCSSEdgeInsets)lyk_margin
+{
+    return self.layer.lyk_style.margin;
+}
+
+- (void)lyk_setPosition:(LYKCSSEdgeInsets)position
+{
+    self.layer.lyk_style.position = position;
+}
+
+- (LYKCSSEdgeInsets)lyk_position
+{
+    return self.layer.lyk_style.position;
+}
+
+- (void)lyk_setPadding:(LYKCSSEdgeInsets)padding
+{
+    self.layer.lyk_style.padding = padding;
+}
+
+- (LYKCSSEdgeInsets)lyk_padding
+{
+    return self.layer.lyk_style.padding;
+}
+
+- (void)lyk_setBorder:(LYKCSSEdgeInsets)border
+{
+    self.layer.lyk_style.border = border;
+}
+
+- (LYKCSSEdgeInsets)lyk_border
+{
+    return self.layer.lyk_style.border;
+}
+
+- (void)lyk_setSize:(CGSize)size
+{
+    self.layer.lyk_style.size = size;
+}
+
+- (CGSize)lyk_size
+{
+    return self.layer.lyk_style.size;
 }
 @end

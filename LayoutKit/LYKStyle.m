@@ -332,7 +332,11 @@ static bool isDirty(void *context);
 
 - (void)setNumberOfChildren:(NSUInteger)numberOfChildren
 {
+    if (_CSSNode->children_count == numberOfChildren) {
+        return;
+    }
     _CSSNode->children_count = (int)numberOfChildren;
+    _isDirty = YES;
 }
 
 - (void)setMeasureBlock:(CGSize (^)(CGFloat))block

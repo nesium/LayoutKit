@@ -40,8 +40,8 @@ static css_dim_t measure(void *context, float width)
     UIView *view = layer.delegate;
     
     css_dim_t dim;
-    dim.dimensions[CSS_WIDTH] = 100.0f;
-    CGSize requiredSize = [view sizeThatFits:(CGSize){200.0f, CGFLOAT_MAX}];
+    dim.dimensions[CSS_WIDTH] = width;
+    CGSize requiredSize = [view sizeThatFits:(CGSize){width, CGFLOAT_MAX}];
     dim.dimensions[CSS_HEIGHT] = requiredSize.height;
     return dim;
 }

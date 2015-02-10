@@ -1,0 +1,3 @@
+[submodule "LayoutKitCSSParser/Libraries/pegkit"]
+	path = LayoutKitCSSParser/Libraries/pegkit
+	url = git@github.com:nesium/pegkit.git

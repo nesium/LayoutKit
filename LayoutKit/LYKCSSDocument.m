@@ -190,6 +190,12 @@ static void LYKEnumerateKatanaArrayWithBlock(KatanaArray *arr,
             }
         } else if (strcmp(p, "border") == 0) {
             LYKCSSApplyBorder(decl, CSSNode, aView);
+        } else if (strcmp(p, "overflow") == 0) {
+            if (strcmp(firstValue->string, "hidden") == 0) {
+                aView.clipsToBounds = YES;
+            } else if (strcmp(firstValue->string, "visible") == 0) {
+                aView.clipsToBounds = NO;
+            }
         } else {
             NSLog(@"Unsupported property %s", p);
         }

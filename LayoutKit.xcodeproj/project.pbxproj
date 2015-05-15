@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C12EFEC1B06AA960097A2B9 /* LayoutKitCSSParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C12EFEB1B06AA960097A2B9 /* LayoutKitCSSParserTests.m */; };
 		2C21265D1A87B19D00BBAC46 /* LYKTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C21265C1A87B19D00BBAC46 /* LYKTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C21265F1A87B20600BBAC46 /* CALayer_LYKInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C21265E1A87B20600BBAC46 /* CALayer_LYKInternal.h */; };
 		2C5B8D721B065C78001B2873 /* testfiles in Resources */ = {isa = PBXBuildFile; fileRef = 2C5B8D711B065C78001B2873 /* testfiles */; };
-		2C5B8D741B065C83001B2873 /* LayoutKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B8D731B065C83001B2873 /* LayoutKitTests.m */; };
 		2C5B8D771B065CA7001B2873 /* LYKCSSDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5B8D751B065CA7001B2873 /* LYKCSSDocument.h */; };
 		2C5B8D781B065CA7001B2873 /* LYKCSSDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B8D761B065CA7001B2873 /* LYKCSSDocument.m */; };
 		2C5B8D871B065CD1001B2873 /* foundation.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B8D7A1B065CD1001B2873 /* foundation.c */; };
@@ -63,10 +63,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C12EFEB1B06AA960097A2B9 /* LayoutKitCSSParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutKitCSSParserTests.m; sourceTree = "<group>"; };
 		2C21265C1A87B19D00BBAC46 /* LYKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYKTypes.h; sourceTree = "<group>"; };
 		2C21265E1A87B20600BBAC46 /* CALayer_LYKInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALayer_LYKInternal.h; sourceTree = "<group>"; };
 		2C5B8D711B065C78001B2873 /* testfiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = testfiles; sourceTree = "<group>"; };
-		2C5B8D731B065C83001B2873 /* LayoutKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutKitTests.m; sourceTree = "<group>"; };
 		2C5B8D751B065CA7001B2873 /* LYKCSSDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYKCSSDocument.h; sourceTree = "<group>"; };
 		2C5B8D761B065CA7001B2873 /* LYKCSSDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYKCSSDocument.m; sourceTree = "<group>"; };
 		2C5B8D7A1B065CD1001B2873 /* foundation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = foundation.c; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				2C689E471A869D0F002A189A /* LayoutKitTests.m */,
-				2C5B8D731B065C83001B2873 /* LayoutKitTests.m */,
+				2C12EFEB1B06AA960097A2B9 /* LayoutKitCSSParserTests.m */,
 				2C5B8D711B065C78001B2873 /* testfiles */,
 				2C689E451A869D0F002A189A /* Supporting Files */,
 			);
@@ -426,8 +426,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C5B8D741B065C83001B2873 /* LayoutKitTests.m in Sources */,
 				2C689E481A869D0F002A189A /* LayoutKitTests.m in Sources */,
+				2C12EFEC1B06AA960097A2B9 /* LayoutKitCSSParserTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

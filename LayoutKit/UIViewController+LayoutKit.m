@@ -13,6 +13,7 @@
 #import "LYKUtils.h"
 #import "LYKCSSDocument.h"
 #import "UIView+LayoutKit.h"
+#import "LYKStyle_Internal.h"
 #import "CALayer+LayoutKit.h"
 #import "LYKFlexBoxLayoutManager.h"
 
@@ -60,6 +61,8 @@ static void *kCSSDocumentKey;
 + (void)lyk_enableLayoutKitLayout
 {
     LYKMethodSwizzle([self class], @selector(viewDidLoad), @selector(lyk_viewDidLoad));
+    LYKMethodSwizzle([self class],
+        @selector(viewWillLayoutSubviews), @selector(lyk_viewWillLayoutSubviews));
 }
 
 - (void)lyk_viewDidLoad
@@ -92,5 +95,12 @@ static void *kCSSDocumentKey;
         self.view.layer.lyk_layoutManager = [LYKFlexBoxLayoutManager new];
     }
     [self lyk_viewDidLoad];
+}
+
+- (void)lyk_viewWillLayoutSubviews
+{
+    self.view.lyk_style.size = self.view.frame.size;
+    
+    [self lyk_viewWillLayoutSubviews];
 }
 @end

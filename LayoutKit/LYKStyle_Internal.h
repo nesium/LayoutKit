@@ -9,9 +9,11 @@
 @import UIKit;
 
 #import "LYKStyle.h"
+#import "Layout.h"
 
 @interface LYKStyle ()
 @property (nonatomic, readonly) CGRect layoutedFrame;
+@property (nonatomic, readonly) css_node_t *CSSNode;
 
 - (void)prepareForLayout;
 - (void)performLayout;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5B8D701B064FC8001B2873 /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 2C5B8D6F1B064FC8001B2873 /* styles.css */; };
 		2C689E601A869D35002A189A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C689E5F1A869D35002A189A /* main.m */; };
 		2C689E631A869D35002A189A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C689E621A869D35002A189A /* AppDelegate.m */; };
 		2C689E661A869D35002A189A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C689E651A869D35002A189A /* ViewController.m */; };
@@ -18,20 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C21279D1A87CEDA00BBAC46 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C2127981A87CEDA00BBAC46 /* LayoutKitCSSParser.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2C21277C1A87CEC400BBAC46;
-			remoteInfo = LayoutKitCSSParser;
-		};
-		2C21279F1A87CEDA00BBAC46 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C2127981A87CEDA00BBAC46 /* LayoutKitCSSParser.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2C2127871A87CEC400BBAC46;
-			remoteInfo = LayoutKitCSSParserTests;
-		};
 		2C689E741A869D35002A189A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2C689E521A869D35002A189A /* Project object */;
@@ -63,7 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2C2127981A87CEDA00BBAC46 /* LayoutKitCSSParser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LayoutKitCSSParser.xcodeproj; path = ../LayoutKitCSSParser/LayoutKitCSSParser.xcodeproj; sourceTree = "<group>"; };
+		2C5B8D6F1B064FC8001B2873 /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		2C689E5A1A869D35002A189A /* LayoutKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LayoutKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C689E5E1A869D35002A189A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C689E5F1A869D35002A189A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,15 +86,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C2127991A87CEDA00BBAC46 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2C21279E1A87CEDA00BBAC46 /* LayoutKitCSSParser.framework */,
-				2C2127A01A87CEDA00BBAC46 /* LayoutKitCSSParserTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		2C689E511A869D35002A189A = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +93,6 @@
 				2C689E761A869D35002A189A /* LayoutKitExampleTests */,
 				2C689E5B1A869D35002A189A /* Products */,
 				2C689E831A869D5A002A189A /* LayoutKit.xcodeproj */,
-				2C2127981A87CEDA00BBAC46 /* LayoutKitCSSParser.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +115,7 @@
 				2C689E671A869D35002A189A /* Main.storyboard */,
 				2C689E6A1A869D35002A189A /* Images.xcassets */,
 				2C689E6C1A869D35002A189A /* LaunchScreen.xib */,
+				2C5B8D6F1B064FC8001B2873 /* styles.css */,
 				2C689E5D1A869D35002A189A /* Supporting Files */,
 			);
 			path = LayoutKitExample;
@@ -251,10 +229,6 @@
 					ProductGroup = 2C689E841A869D5A002A189A /* Products */;
 					ProjectRef = 2C689E831A869D5A002A189A /* LayoutKit.xcodeproj */;
 				},
-				{
-					ProductGroup = 2C2127991A87CEDA00BBAC46 /* Products */;
-					ProjectRef = 2C2127981A87CEDA00BBAC46 /* LayoutKitCSSParser.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -265,20 +239,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2C21279E1A87CEDA00BBAC46 /* LayoutKitCSSParser.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = LayoutKitCSSParser.framework;
-			remoteRef = 2C21279D1A87CEDA00BBAC46 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2C2127A01A87CEDA00BBAC46 /* LayoutKitCSSParserTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = LayoutKitCSSParserTests.xctest;
-			remoteRef = 2C21279F1A87CEDA00BBAC46 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		2C689E891A869D5B002A189A /* LayoutKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -301,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C689E691A869D35002A189A /* Main.storyboard in Resources */,
+				2C5B8D701B064FC8001B2873 /* styles.css in Resources */,
 				2C689E6E1A869D35002A189A /* LaunchScreen.xib in Resources */,
 				2C689E6B1A869D35002A189A /* Images.xcassets in Resources */,
 			);
@@ -453,7 +414,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LayoutKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -464,7 +424,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LayoutKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

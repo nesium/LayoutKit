@@ -23,7 +23,9 @@ typedef NS_ENUM(NSUInteger, LYKCSSDisplay) {
 
 typedef NS_ENUM(NSUInteger, LYKCSSFlexDirection) {
     LYKCSSFlexDirectionColumn,
-    LYKCSSFlexDirectionRow
+    LYKCSSFlexDirectionColumnReverse,
+    LYKCSSFlexDirectionRow,
+    LYKCSSFlexDirectionRowReverse
 };
 
 typedef NS_ENUM(NSUInteger, LYKCSSJustification) {

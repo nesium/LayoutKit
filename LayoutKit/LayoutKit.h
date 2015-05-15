@@ -18,4 +18,6 @@ FOUNDATION_EXPORT const unsigned char LayoutKitVersionString[];
 #import <LayoutKit/LYKLayoutManager.h>
 #import <LayoutKit/CALayer+LayoutKit.h>
 #import <LayoutKit/UIView+LayoutKit.h>
+#import <LayoutKit/UIViewController+LayoutKit.h>
 #import <LayoutKit/LYKFlexBoxLayoutManager.h>
+#import <LayoutKit/LYKStyle.h>

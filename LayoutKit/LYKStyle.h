@@ -9,7 +9,7 @@
 @import Foundation;
 @import CoreGraphics;
 
-#import "LYKTypes.h"
+#import <LayoutKit/LYKTypes.h>
 
 @interface LYKStyle : NSObject
 @property (nonatomic, assign) LYKCSSDisplay display;

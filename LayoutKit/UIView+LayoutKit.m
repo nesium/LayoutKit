@@ -8,138 +8,81 @@
 
 #import "UIView+LayoutKit.h"
 
-#import "CALayer_LYKInternal.h"
+@import ObjectiveC.runtime;
+
 #import "LYKStyle.h"
+#import "LYKUtils.h"
+#import "LYKCSSDocument.h"
+#import "CALayer_LYKInternal.h"
+#import "UIViewController_LYKInternal.h"
+
+static void *kNameKey;
 
 @implementation UIView (LayoutKit)
 
-- (void)lyk_setDisplay:(LYKCSSDisplay)display
+#pragma mark - Initialization
+
++ (void)load
 {
-    self.layer.lyk_style.display = display;
+    if (self == [UIView class]) {
+        [self lyk_enableLayoutKitLayout];
+    }
 }
 
-- (LYKCSSDisplay)lyk_display
+
+
+#pragma mark - Public Methods
+
+- (NSString *)lyk_name
 {
-    return self.layer.lyk_style.display;
+    return objc_getAssociatedObject(self, &kNameKey);
 }
 
-- (void)lyk_setDirection:(LYKCSSFlexDirection)direction
+- (void)lyk_setName:(NSString *)name
 {
-    self.layer.lyk_style.direction = direction;
+    objc_setAssociatedObject(self, &kNameKey, name, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (LYKCSSFlexDirection)lyk_direction
+- (LYKStyle *)lyk_style
 {
-    return self.layer.lyk_style.direction;
+    return self.layer.lyk_style;
 }
 
-- (void)lyk_setContentJustification:(LYKCSSJustification)contentJustification
+
+
+#pragma mark - Private Methods
+
++ (void)lyk_enableLayoutKitLayout
 {
-    self.layer.lyk_style.contentJustification = contentJustification;
+    LYKMethodSwizzle([self class], @selector(didMoveToWindow), @selector(lyk_didMoveToWindow));
 }
 
-- (LYKCSSJustification)lyk_contentJustification
+- (void)lyk_didMoveToWindow
 {
-    return self.layer.lyk_style.contentJustification;
+    if (self.lyk_name != nil) {
+        [self lyk_applyStyles];
+    }
+    [self lyk_didMoveToWindow];
 }
 
-- (void)lyk_setItemsAlignment:(LYKCSSAlign)itemsAlignment
+- (void)lyk_applyStyles
 {
-    self.layer.lyk_style.itemsAlignment = itemsAlignment;
-}
-
-- (LYKCSSAlign)lyk_itemsAlignment
-{
-    return self.layer.lyk_style.itemsAlignment;
-}
-
-- (void)lyk_setSelfAlignment:(LYKCSSAlign)selfAlignment
-{
-    self.layer.lyk_style.selfAlignment = selfAlignment;
-}
-
-- (LYKCSSAlign)lyk_selfAlignment
-{
-    return self.layer.lyk_style.selfAlignment;
-}
-
-- (void)lyk_setPositionType:(LYKCSSPositionType)positionType
-{
-    self.layer.lyk_style.positionType = positionType;
-}
-
-- (LYKCSSPositionType)lyk_positionType
-{
-    return self.layer.lyk_style.positionType;
-}
-
-- (void)lyk_setWrap:(LYKCSSWrap)wrap
-{
-    self.layer.lyk_style.wrap = wrap;
-}
-
-- (LYKCSSWrap)lyk_wrap
-{
-    return self.layer.lyk_style.wrap;
-}
-
-- (void)lyk_setFlex:(CGFloat)flex
-{
-    self.layer.lyk_style.flex = flex;
-}
-
-- (CGFloat)lyk_flex
-{
-    return self.layer.lyk_style.flex;
-}
-
-- (void)lyk_setMargin:(LYKCSSEdgeInsets)margin
-{
-    self.layer.lyk_style.margin = margin;
-}
-
-- (LYKCSSEdgeInsets)lyk_margin
-{
-    return self.layer.lyk_style.margin;
-}
-
-- (void)lyk_setPosition:(LYKCSSEdgeInsets)position
-{
-    self.layer.lyk_style.position = position;
-}
-
-- (LYKCSSEdgeInsets)lyk_position
-{
-    return self.layer.lyk_style.position;
-}
-
-- (void)lyk_setPadding:(LYKCSSEdgeInsets)padding
-{
-    self.layer.lyk_style.padding = padding;
-}
-
-- (LYKCSSEdgeInsets)lyk_padding
-{
-    return self.layer.lyk_style.padding;
-}
-
-- (void)lyk_setBorder:(LYKCSSEdgeInsets)border
-{
-    self.layer.lyk_style.border = border;
-}
-
-- (LYKCSSEdgeInsets)lyk_border
-{
-    return self.layer.lyk_style.border;
-}
-
-- (void)lyk_setSize:(CGSize)size
-{
-    self.layer.lyk_style.size = size;
-}
-
-- (CGSize)lyk_size
-{
-    return self.layer.lyk_style.size;
+    UIView *superview = self;
+    LYKCSSDocument *cssDocument;
+    
+    while (superview) {
+        if ([superview.nextResponder isKindOfClass:[UIViewController class]]) {
+            cssDocument = ((UIViewController *)superview.nextResponder).lyk_CSSDocument;
+            break;
+        }
+        superview = superview.superview;
+    }
+    
+    if (cssDocument == nil) {
+        NSLog(@"No CSS Document found for View '%@'", self.lyk_name);
+        return;
+    }
+    
+    [cssDocument applyStylesToView:self];
 }
 @end

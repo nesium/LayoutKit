@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 nesiumdotcom. All rights reserved.
 //
 
-#import "CALayer+LayoutKit.h"
 #import "CALayer_LYKInternal.h"
 
 #import "LYKUtils.h"
@@ -23,6 +22,8 @@ static void *kStyleKey;
 
 @implementation CALayer (LayoutKit)
 
+#pragma mark - Initialization
+
 + (void)load
 {
     if (self == [CALayer class]) {
@@ -30,10 +31,9 @@ static void *kStyleKey;
     }
 }
 
-+ (void)lyk_enableLayoutKitLayout
-{
-    LYKMethodSwizzle([self class], @selector(layoutSublayers), @selector(lyk_layoutSublayers));
-}
+
+
+#pragma mark - Public Methods
 
 - (void)lyk_setLayoutManager:(id<LYKLayoutManager>)layoutManager
 {
@@ -47,6 +47,10 @@ static void *kStyleKey;
 {
     return objc_getAssociatedObject(self, &kLayoutManagerKey);
 }
+
+
+
+#pragma mark - Internal Methods
 
 - (void)lyk_setStyle:(LYKStyle *)style
 {
@@ -62,6 +66,15 @@ static void *kStyleKey;
         self.lyk_style = style;
     }
     return style;
+}
+
+
+
+#pragma mark - Private Methods
+
++ (void)lyk_enableLayoutKitLayout
+{
+    LYKMethodSwizzle([self class], @selector(layoutSublayers), @selector(lyk_layoutSublayers));
 }
 
 - (void)lyk_layoutSublayers

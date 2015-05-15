@@ -8,8 +8,6 @@
 
 #import "LYKStyle_Internal.h"
 
-#import "Layout.h"
-
 const LYKCSSEdgeInsets LYKCSSInsetsZero =
     (LYKCSSEdgeInsets){0.0f, 0.0f, 0.0f, 0.0f};
 const CGSize LYKCSSSizeZero = (CGSize){CSS_UNDEFINED, CSS_UNDEFINED};
@@ -313,6 +311,11 @@ static bool isDirty(void *context);
     };
 }
 
+- (css_node_t *)CSSNode
+{
+    return _CSSNode;
+}
+
 - (void)prepareForLayout
 {
     if (!_isDirty) {
@@ -327,7 +330,7 @@ static bool isDirty(void *context);
 
 - (void)performLayout
 {
-    layoutNode(_CSSNode, _CSSNode->style.dimensions[CSS_WIDTH]);
+    layoutNode(_CSSNode, _CSSNode->style.dimensions[CSS_WIDTH], CSS_DIRECTION_LTR);
 }
 
 - (void)setNumberOfChildren:(NSUInteger)numberOfChildren

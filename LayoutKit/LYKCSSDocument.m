@@ -196,6 +196,8 @@ static void LYKEnumerateKatanaArrayWithBlock(KatanaArray *arr,
             } else if (strcmp(firstValue->string, "visible") == 0) {
                 aView.clipsToBounds = NO;
             }
+        } else if (strcmp(p, "border-radius") == 0) {
+            aView.layer.cornerRadius = firstValue->fValue;
         } else {
             NSLog(@"Unsupported property %s", p);
         }

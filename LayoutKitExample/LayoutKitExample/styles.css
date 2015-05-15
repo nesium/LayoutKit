@@ -18,4 +18,5 @@ container item {
     width: 60;
     align-self: stretch;
     border: 1 solid #000;
+    border-radius: 10;
 }

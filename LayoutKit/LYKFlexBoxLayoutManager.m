@@ -53,9 +53,8 @@
     __block void (__weak ^weakApplyLayoutToLayer)(CALayer *);
     
     void (^applyLayoutToLayer)(CALayer *) = ^(CALayer *theLayer) {
-        theLayer.frame = theLayer.lyk_style.layoutedFrame;
-        
         for (CALayer *sublayer in theLayer.sublayers) {
+            sublayer.frame = sublayer.lyk_style.layoutedFrame;
             weakApplyLayoutToLayer(sublayer);
         }
     };

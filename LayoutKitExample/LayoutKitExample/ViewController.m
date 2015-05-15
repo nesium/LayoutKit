@@ -38,7 +38,6 @@
     containerView.lyk_name = @"container";
     
     containerView.backgroundColor = [UIColor lightGrayColor];
-    containerView.layer.lyk_layoutManager = [LYKFlexBoxLayoutManager new];
     [self.view addSubview:containerView];
     
     for (NSUInteger idx = 0; idx < 3; idx++) {

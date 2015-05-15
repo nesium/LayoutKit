@@ -12,6 +12,8 @@
 
 #import "LYKUtils.h"
 #import "LYKCSSDocument.h"
+#import "CALayer+LayoutKit.h"
+#import "LYKFlexBoxLayoutManager.h"
 
 static void *kCSSFilePathKey;
 static void *kCSSDocumentKey;
@@ -62,6 +64,7 @@ static void *kCSSDocumentKey;
 - (void)lyk_viewDidLoad
 {
     NSString *filePath = self.lyk_CSSFilePath;
+    
     if (filePath != nil) {
         if (!filePath.isAbsolutePath) {
             filePath = [[NSBundle mainBundle]
@@ -82,6 +85,8 @@ static void *kCSSDocumentKey;
         }
         
         objc_setAssociatedObject(self, &kCSSDocumentKey, doc, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        
+        self.view.layer.lyk_layoutManager = [LYKFlexBoxLayoutManager new];
     }
     [self lyk_viewDidLoad];
 }

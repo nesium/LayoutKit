@@ -133,6 +133,10 @@ static void LYKEnumerateKatanaArrayWithBlock(KatanaArray *arr,
             CSSNode->style.position[CSS_TOP] = firstValue->fValue;
         } else if (strcmp(p, "left") == 0) {
             CSSNode->style.position[CSS_LEFT] = firstValue->fValue;
+        } else if (strcmp(p, "bottom") == 0) {
+            CSSNode->style.position[CSS_BOTTOM] = firstValue->fValue;
+        } else if (strcmp(p, "right") == 0) {
+            CSSNode->style.position[CSS_RIGHT] = firstValue->fValue;
         } else if (strcmp(p, "padding") == 0) {
             LYKCSSApplyPaddingOrMargin(decl, CSSNode->style.padding);
         } else if (strcmp(p, "padding-top") == 0) {
@@ -198,6 +202,12 @@ static void LYKEnumerateKatanaArrayWithBlock(KatanaArray *arr,
             }
         } else if (strcmp(p, "border-radius") == 0) {
             aView.layer.cornerRadius = firstValue->fValue;
+        } else if (strcmp(p, "position") == 0) {
+            if (strcmp(firstValue->string, "absolute") == 0) {
+                CSSNode->style.position_type = CSS_POSITION_ABSOLUTE;
+            } else if (strcmp(firstValue->string, "relative") == 0) {
+                CSSNode->style.position_type = CSS_POSITION_RELATIVE;
+            }
         } else {
             NSLog(@"Unsupported property %s", p);
         }

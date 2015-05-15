@@ -46,6 +46,10 @@
         [containerView addSubview:subview];
     }
     
+    UIView *absolute = [UIView new];
+    absolute.lyk_name = @"absolute";
+    [containerView addSubview:absolute];
+    
 //    UIView *parent = containerView.subviews[1];
 //    parent.lyk_direction = LYKCSSFlexDirectionColumn;
 //    parent.lyk_padding = (LYKCSSEdgeInsets){3.0f, 3.0f, 1.0f, 3.0f};

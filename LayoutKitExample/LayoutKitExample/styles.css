@@ -20,3 +20,12 @@ container item {
     border: 1 solid #000;
     border-radius: 10;
 }
+
+container absolute {
+    background-color: green;
+    width: 20;
+    height: 20;
+    position: absolute;
+    top: 20;
+    left: 30;
+}

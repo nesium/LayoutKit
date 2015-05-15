@@ -12,6 +12,7 @@
 
 #import "LYKUtils.h"
 #import "LYKCSSDocument.h"
+#import "UIView+LayoutKit.h"
 #import "CALayer+LayoutKit.h"
 #import "LYKFlexBoxLayoutManager.h"
 
@@ -86,6 +87,8 @@ static void *kCSSDocumentKey;
         
         objc_setAssociatedObject(self, &kCSSDocumentKey, doc, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
+        self.view.lyk_name = @"root";
+        [doc applyStylesToView:self.view];
         self.view.layer.lyk_layoutManager = [LYKFlexBoxLayoutManager new];
     }
     [self lyk_viewDidLoad];

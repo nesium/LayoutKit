@@ -15,6 +15,7 @@
 
 static void *kLayoutManagerKey;
 static void *kStyleKey;
+static void *kRootLayerKey;
 
 @interface CALayer ()
 @property (nonatomic, strong, readwrite, setter=lyk_setStyle:) LYKStyle *lyk_style;
@@ -68,6 +69,17 @@ static void *kStyleKey;
     return style;
 }
 
+- (BOOL)lyk_rootLayer
+{
+    return [objc_getAssociatedObject(self, &kRootLayerKey) boolValue];
+}
+
+- (void)lyk_setRootLayer:(BOOL)rootLayer
+{
+    objc_setAssociatedObject(self, &kRootLayerKey, @(rootLayer),
+        OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 
 
 #pragma mark - Private Methods
@@ -79,6 +91,10 @@ static void *kStyleKey;
 
 - (void)lyk_layoutSublayers
 {
+    if (self.lyk_rootLayer) {
+        self.lyk_style.size = self.bounds.size;
+    }
+    
     if (self.lyk_layoutManager) {
         if (self.sublayers.count) {
             [self.lyk_layoutManager layoutSublayersOfLayer:self];

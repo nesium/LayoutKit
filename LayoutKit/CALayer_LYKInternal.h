@@ -12,4 +12,5 @@
 
 @interface CALayer (LYKInternal)
 @property (nonatomic, strong, readonly) LYKStyle *lyk_style;
+@property (nonatomic, assign, setter=lyk_setRootLayer:) BOOL lyk_rootLayer;
 @end

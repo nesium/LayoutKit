@@ -6,11 +6,13 @@ container {
     left: 10;
     padding: 5 10;
     flex-direction: row;
-    justify-content: space-around;
+/*    justify-content: space-around;*/
 }
 
 container item {
-    background-color: red;
+    background-color: #f00;
     width: 60;
     align-self: stretch;
+    border: 1 solid #000;
+    margin-right: 2;
 }

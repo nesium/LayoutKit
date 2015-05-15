@@ -31,6 +31,8 @@
 		2C5B8D9A1B065FDD001B2873 /* UIViewController_LYKInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5B8D991B065FDD001B2873 /* UIViewController_LYKInternal.h */; };
 		2C5B8D9E1B0671B3001B2873 /* ColorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5B8D9C1B0671B3001B2873 /* ColorUtils.h */; };
 		2C5B8D9F1B0671B3001B2873 /* ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B8D9D1B0671B3001B2873 /* ColorUtils.m */; };
+		2C5B8DA41B069789001B2873 /* LYKCSSUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5B8DA21B069789001B2873 /* LYKCSSUtils.h */; };
+		2C5B8DA51B069789001B2873 /* LYKCSSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B8DA31B069789001B2873 /* LYKCSSUtils.m */; };
 		2C689E3B1A869D0F002A189A /* LayoutKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C689E3A1A869D0F002A189A /* LayoutKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C689E411A869D0F002A189A /* LayoutKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C689E351A869D0F002A189A /* LayoutKit.framework */; };
 		2C689E481A869D0F002A189A /* LayoutKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C689E471A869D0F002A189A /* LayoutKitTests.m */; };
@@ -85,6 +87,8 @@
 		2C5B8D991B065FDD001B2873 /* UIViewController_LYKInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewController_LYKInternal.h; sourceTree = "<group>"; };
 		2C5B8D9C1B0671B3001B2873 /* ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorUtils.h; sourceTree = "<group>"; };
 		2C5B8D9D1B0671B3001B2873 /* ColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorUtils.m; sourceTree = "<group>"; };
+		2C5B8DA21B069789001B2873 /* LYKCSSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYKCSSUtils.h; sourceTree = "<group>"; };
+		2C5B8DA31B069789001B2873 /* LYKCSSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYKCSSUtils.m; sourceTree = "<group>"; };
 		2C689E351A869D0F002A189A /* LayoutKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LayoutKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C689E391A869D0F002A189A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C689E3A1A869D0F002A189A /* LayoutKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutKit.h; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				2C689E981A869FB2002A189A /* LYKUtils.m */,
 				2C5B8D751B065CA7001B2873 /* LYKCSSDocument.h */,
 				2C5B8D761B065CA7001B2873 /* LYKCSSDocument.m */,
+				2C5B8DA21B069789001B2873 /* LYKCSSUtils.h */,
+				2C5B8DA31B069789001B2873 /* LYKCSSUtils.m */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -279,6 +285,7 @@
 				2C5B8D911B065CD1001B2873 /* selector.h in Headers */,
 				2C689E951A869E86002A189A /* CALayer+LayoutKit.h in Headers */,
 				2C689EA51A86CB92002A189A /* UIView+LayoutKit.h in Headers */,
+				2C5B8DA41B069789001B2873 /* LYKCSSUtils.h in Headers */,
 				2C5B8D971B065D48001B2873 /* UIViewController+LayoutKit.h in Headers */,
 				2C5B8D881B065CD1001B2873 /* foundation.h in Headers */,
 				2C689EB01A86CF69002A189A /* LYKStyle_Internal.h in Headers */,
@@ -398,6 +405,7 @@
 			files = (
 				2C5B8D901B065CD1001B2873 /* selector.c in Sources */,
 				2C5B8D8C1B065CD1001B2873 /* katana.tab.c in Sources */,
+				2C5B8DA51B069789001B2873 /* LYKCSSUtils.m in Sources */,
 				2C689EA61A86CB92002A189A /* UIView+LayoutKit.m in Sources */,
 				2C5B8D8E1B065CD1001B2873 /* parser.c in Sources */,
 				2C5B8D8A1B065CD1001B2873 /* katana.lex.c in Sources */,

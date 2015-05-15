@@ -39,19 +39,11 @@
     
     containerView.backgroundColor = [UIColor lightGrayColor];
     containerView.layer.lyk_layoutManager = [LYKFlexBoxLayoutManager new];
-//    containerView.lyk_style.size = (CGSize){300.0f, 100.0f};
-//    containerView.lyk_style.position = (LYKCSSEdgeInsets){50.0f, 40.0f, 0.0f, 0.0f};
-//    containerView.lyk_style.padding = (LYKCSSEdgeInsets){5.0f, 10.0f, 5.0f, 10.0f};
-//    containerView.lyk_style.contentJustification = LYKCSSJustificationSpaceAround;
-//    containerView.lyk_style.direction = LYKCSSFlexDirectionRow;
     [self.view addSubview:containerView];
     
     for (NSUInteger idx = 0; idx < 3; idx++) {
         UIView *subview = [UIView new];
         subview.lyk_name = @"item";
-//        subview.backgroundColor = [UIColor redColor];
-//        subview.lyk_style.size = (CGSize){60.0f, NAN};
-//        subview.lyk_style.selfAlignment = LYKCSSAlignStretch;
         [containerView addSubview:subview];
     }
     

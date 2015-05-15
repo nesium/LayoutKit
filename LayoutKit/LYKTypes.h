@@ -60,3 +60,8 @@ typedef NS_ENUM(NSUInteger, LYKCSSPosition) {
     LYKCSSPositionRight,
     LYKCSSPositionBottom
 };
+
+typedef NS_ENUM(NSUInteger, LYKCSSBorderStyle) {
+    LYKCSSBorderStyleNone,
+    LYKCSSBorderStyleSolid
+};

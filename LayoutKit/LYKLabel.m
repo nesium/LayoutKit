@@ -62,6 +62,20 @@
             	encoding:NSUTF8StringEncoding]
             size:((KatanaValue *)decl->values->data[0])->fValue];
         return YES;
+    } else if (strcmp(p, "text-align") == 0) {
+        const char *align = ((KatanaValue *)decl->values->data[0])->string;
+        
+        if (strcmp(align, "left") == 0) {
+            self.textAlignment = NSTextAlignmentLeft;
+        } else if (strcmp(align, "right") == 0) {
+            self.textAlignment = NSTextAlignmentRight;
+        } else if (strcmp(align, "center") == 0) {
+            self.textAlignment = NSTextAlignmentCenter;
+        } else if (strcmp(align, "justify") == 0) {
+            self.textAlignment = NSTextAlignmentJustified;
+        }
+    
+        return YES;
     }
     
     return NO;

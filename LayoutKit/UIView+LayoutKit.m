@@ -73,7 +73,9 @@ static void *kNameKey;
     while (superview) {
         if ([superview.nextResponder isKindOfClass:[UIViewController class]]) {
             cssDocument = ((UIViewController *)superview.nextResponder).lyk_CSSDocument;
-            break;
+            if (cssDocument != nil) {
+                break;
+            }
         }
         superview = superview.superview;
     }

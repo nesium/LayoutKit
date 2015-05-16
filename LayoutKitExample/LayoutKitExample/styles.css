@@ -15,7 +15,7 @@ container {
 
 container item {
     background-color: #f00;
-    width: 60;
+    flex: 1;
     align-self: stretch;
     border: 1 solid #000;
     border-radius: 10;

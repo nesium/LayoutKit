@@ -208,6 +208,8 @@ static void LYKEnumerateKatanaArrayWithBlock(KatanaArray *arr,
             } else if (strcmp(firstValue->string, "relative") == 0) {
                 CSSNode->style.position_type = CSS_POSITION_RELATIVE;
             }
+        } else if (strcmp(p, "flex") == 0) {
+            CSSNode->style.flex = firstValue->fValue;
         } else {
             NSLog(@"Unsupported property %s", p);
         }

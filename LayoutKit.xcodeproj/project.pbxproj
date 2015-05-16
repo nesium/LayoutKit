@@ -50,6 +50,9 @@
 		2C689EAD1A86CCBA002A189A /* Layout.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C689EAB1A86CCBA002A189A /* Layout.c */; };
 		2C689EAE1A86CCBA002A189A /* Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C689EAC1A86CCBA002A189A /* Layout.h */; };
 		2C689EB01A86CF69002A189A /* LYKStyle_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C689EAF1A86CF69002A189A /* LYKStyle_Internal.h */; };
+		2CCAFCB21B0783D300AB787B /* LYKLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CCAFCB01B0783D300AB787B /* LYKLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CCAFCB31B0783D300AB787B /* LYKLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCAFCB11B0783D300AB787B /* LYKLabel.m */; };
+		2CCAFCB51B078F1700AB787B /* CSSConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CCAFCB41B078F1700AB787B /* CSSConsumer.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +112,9 @@
 		2C689EAB1A86CCBA002A189A /* Layout.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Layout.c; sourceTree = "<group>"; };
 		2C689EAC1A86CCBA002A189A /* Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layout.h; sourceTree = "<group>"; };
 		2C689EAF1A86CF69002A189A /* LYKStyle_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYKStyle_Internal.h; sourceTree = "<group>"; };
+		2CCAFCB01B0783D300AB787B /* LYKLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYKLabel.h; sourceTree = "<group>"; };
+		2CCAFCB11B0783D300AB787B /* LYKLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYKLabel.m; sourceTree = "<group>"; };
+		2CCAFCB41B078F1700AB787B /* CSSConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSConsumer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,8 @@
 				2C5B8D951B065D48001B2873 /* UIViewController+LayoutKit.h */,
 				2C5B8D961B065D48001B2873 /* UIViewController+LayoutKit.m */,
 				2C5B8D991B065FDD001B2873 /* UIViewController_LYKInternal.h */,
+				2CCAFCB01B0783D300AB787B /* LYKLabel.h */,
+				2CCAFCB11B0783D300AB787B /* LYKLabel.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -261,6 +269,7 @@
 		2C689EB11A86CF7E002A189A /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				2CCAFCB41B078F1700AB787B /* CSSConsumer.h */,
 				2C21265E1A87B20600BBAC46 /* CALayer_LYKInternal.h */,
 				2C689EAF1A86CF69002A189A /* LYKStyle_Internal.h */,
 				2C689E971A869FB2002A189A /* LYKUtils.h */,
@@ -280,10 +289,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCAFCB21B0783D300AB787B /* LYKLabel.h in Headers */,
 				2C5B8D9E1B0671B3001B2873 /* ColorUtils.h in Headers */,
 				2C21265F1A87B20600BBAC46 /* CALayer_LYKInternal.h in Headers */,
 				2C5B8D911B065CD1001B2873 /* selector.h in Headers */,
 				2C689E951A869E86002A189A /* CALayer+LayoutKit.h in Headers */,
+				2CCAFCB51B078F1700AB787B /* CSSConsumer.h in Headers */,
 				2C689EA51A86CB92002A189A /* UIView+LayoutKit.h in Headers */,
 				2C5B8DA41B069789001B2873 /* LYKCSSUtils.h in Headers */,
 				2C5B8D971B065D48001B2873 /* UIViewController+LayoutKit.h in Headers */,
@@ -419,6 +430,7 @@
 				2C5B8D9F1B0671B3001B2873 /* ColorUtils.m in Sources */,
 				2C689E961A869E86002A189A /* CALayer+LayoutKit.m in Sources */,
 				2C5B8D981B065D48001B2873 /* UIViewController+LayoutKit.m in Sources */,
+				2CCAFCB31B0783D300AB787B /* LYKLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

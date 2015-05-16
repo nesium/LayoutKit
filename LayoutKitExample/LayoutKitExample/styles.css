@@ -29,3 +29,15 @@ container absolute {
     top: 20;
     left: 30;
 }
+
+label {
+    align-self: stretch;
+    color: white;
+    font: 20 Futura-CondensedExtraBold;
+}
+
+container2 {
+    align-self: stretch;
+    background-color: yellow;
+    height: 40;
+}

@@ -374,9 +374,9 @@ static bool isDirty(void *context);
 {
     BOOL canMeasure = _measureBlock != nil;
     canMeasure = canMeasure && _display == LYKCSSDisplayInline;
-    canMeasure = canMeasure && (!isnan(_CSSNode->style.dimensions[CSS_WIDTH]) ||
-    	!isnan(_CSSNode->style.dimensions[CSS_HEIGHT]));
-    
+    canMeasure = canMeasure &&
+        (isnan(_CSSNode->style.dimensions[CSS_WIDTH]) ||
+        isnan(_CSSNode->style.dimensions[CSS_HEIGHT]));
     _CSSNode->measure = canMeasure
         ? measure
         : NULL;

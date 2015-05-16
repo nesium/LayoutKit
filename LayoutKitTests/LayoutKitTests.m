@@ -10,7 +10,6 @@
 #import <XCTest/XCTest.h>
 
 @interface LayoutKitTests : XCTestCase
-
 @end
 
 @implementation LayoutKitTests

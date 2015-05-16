@@ -24,3 +24,19 @@ void LYKMethodSwizzle(Class c, SEL origSEL, SEL overrideSEL)
         method_exchangeImplementations(origMethod, overrideMethod);
     }
 }
+
+
+CGFloat lykFloorf(CGFloat value)
+{
+    return floorf(value * [UIScreen mainScreen].scale) / [UIScreen mainScreen].scale;
+}
+
+CGFloat lykCeilf(CGFloat value)
+{
+    return ceilf(value * [UIScreen mainScreen].scale) / [UIScreen mainScreen].scale;
+}
+
+CGFloat lykRoundf(CGFloat value)
+{
+    return roundf(value * [UIScreen mainScreen].scale) / [UIScreen mainScreen].scale;
+}

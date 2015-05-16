@@ -54,7 +54,8 @@
     
     void (^applyLayoutToLayer)(CALayer *) = ^(CALayer *theLayer) {
         for (CALayer *sublayer in theLayer.sublayers) {
-            sublayer.frame = sublayer.lyk_style.layoutedFrame;
+            UIView *view = sublayer.delegate;
+            sublayer.frame = [view alignmentRectForFrame:sublayer.lyk_style.layoutedFrame];
             weakApplyLayoutToLayer(sublayer);
         }
     };
@@ -73,7 +74,8 @@
 - (CGSize)preferredSizeOfLayer:(CALayer *)layer width:(CGFloat)width
 {
     UIView *view = layer.delegate;
-    return [view sizeThatFits:(CGSize){width, CGFLOAT_MAX}];
+    CGSize size = [view sizeThatFits:(CGSize){width, CGFLOAT_MAX}];
+    return [view frameForAlignmentRect:(CGRect){0.0f, 0.0f, size}].size;
 }
 
 - (LYKStyle *)styleForSublayerAtIndex:(NSUInteger)idx parentLayer:(CALayer *)parentLayer

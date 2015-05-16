@@ -13,6 +13,7 @@
 #import "LYKStyle_Internal.h"
 #import "ColorUtils.h"
 #import "LYKCSSUtils.h"
+#import "CSSConsumer.h"
 
 static void LYKEnumerateKatanaArrayWithBlock(KatanaArray *arr,
     void (^block)(void *obj, NSUInteger idx, BOOL *stop)) {
@@ -211,7 +212,10 @@ static void LYKEnumerateKatanaArrayWithBlock(KatanaArray *arr,
         } else if (strcmp(p, "flex") == 0) {
             CSSNode->style.flex = firstValue->fValue;
         } else {
-            NSLog(@"Unsupported property %s", p);
+            if (![aView conformsToProtocol:@protocol(CSSConsumer)] ||
+            	![(id<CSSConsumer>)aView applyCSSDeclaration:decl]) {
+                NSLog(@"Unsupported property %s", p);
+            }
         }
     });
 }

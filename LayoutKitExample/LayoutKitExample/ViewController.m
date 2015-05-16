@@ -50,6 +50,16 @@
     absolute.lyk_name = @"absolute";
     [containerView addSubview:absolute];
     
+    LYKLabel *label = [LYKLabel new];
+    label.lyk_name = @"label";
+    label.font = [UIFont systemFontOfSize:40.0f];
+    label.text = @"ASDF gjiKO";
+    [self.view addSubview:label];
+    
+    UIView *containerView2 = [UIView new];
+    containerView2.lyk_name = @"container2";
+    [self.view addSubview:containerView2];
+    
 //    UIView *parent = containerView.subviews[1];
 //    parent.lyk_direction = LYKCSSFlexDirectionColumn;
 //    parent.lyk_padding = (LYKCSSEdgeInsets){3.0f, 3.0f, 1.0f, 3.0f};

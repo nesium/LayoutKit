@@ -69,6 +69,11 @@ static void *kRootLayerKey;
     return style;
 }
 
+- (BOOL)lyk_hasStyle
+{
+    return objc_getAssociatedObject(self, &kStyleKey) != nil;
+}
+
 - (BOOL)lyk_rootLayer
 {
     return [objc_getAssociatedObject(self, &kRootLayerKey) boolValue];

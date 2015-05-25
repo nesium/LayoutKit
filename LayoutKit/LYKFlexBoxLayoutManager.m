@@ -54,6 +54,10 @@
     
     void (^applyLayoutToLayer)(CALayer *) = ^(CALayer *theLayer) {
         for (CALayer *sublayer in theLayer.sublayers) {
+            if (!sublayer.lyk_hasStyle) {
+                continue;
+            }
+            
             UIView *view = sublayer.delegate;
             sublayer.frame = [view alignmentRectForFrame:sublayer.lyk_style.layoutedFrame];
             weakApplyLayoutToLayer(sublayer);

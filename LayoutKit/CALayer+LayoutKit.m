@@ -69,6 +69,11 @@ static void *kRootLayerKey;
     return style;
 }
 
+- (LYKStyle *)lyk_styleIfExists
+{
+    return objc_getAssociatedObject(self, &kStyleKey);
+}
+
 - (BOOL)lyk_hasStyle
 {
     return objc_getAssociatedObject(self, &kStyleKey) != nil;

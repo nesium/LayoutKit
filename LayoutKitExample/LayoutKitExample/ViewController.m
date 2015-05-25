@@ -60,6 +60,11 @@
     containerView2.lyk_name = @"container2";
     [self.view addSubview:containerView2];
     
+    UIView *nonStyledLayer = [[UIView alloc] initWithFrame:(CGRect){10.0f, 200.0f, 20.0f, 20.0f}];
+    nonStyledLayer.backgroundColor = [UIColor brownColor];
+    nonStyledLayer.layer.name = @"unstyled";
+    [self.view addSubview:nonStyledLayer];
+    
 //    UIView *parent = containerView.subviews[1];
 //    parent.lyk_direction = LYKCSSFlexDirectionColumn;
 //    parent.lyk_padding = (LYKCSSEdgeInsets){3.0f, 3.0f, 1.0f, 3.0f};

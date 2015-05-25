@@ -26,8 +26,9 @@
     
     void (^prepareLayerForLayout)(CALayer *) = ^(CALayer *theLayer) {
         __weak CALayer *weakLayer = theLayer;
-        
-        [theLayer.lyk_style setNumberOfChildren:theLayer.sublayers.count];
+        if (!theLayer.lyk_hasStyle) {
+            return;
+        }
         
         [theLayer.lyk_style prepareForLayout];
         
@@ -43,9 +44,15 @@
             [weakSelf handleChangeInLayer:weakLayer rootLayer:weakRootLayer];
         }];
         
+        NSUInteger childrenCount = 0;
         for (CALayer *sublayer in theLayer.sublayers) {
-            weakPrepareLayerForLayout(sublayer);
+            if (sublayer.lyk_hasStyle) {
+                weakPrepareLayerForLayout(sublayer);
+                childrenCount++;
+            }
         }
+        
+        [theLayer.lyk_style setNumberOfChildren:childrenCount];
     };
     
     weakPrepareLayerForLayout = prepareLayerForLayout;
@@ -84,8 +91,21 @@
 
 - (LYKStyle *)styleForSublayerAtIndex:(NSUInteger)idx parentLayer:(CALayer *)parentLayer
 {
-    CALayer *sublayer = parentLayer.sublayers[idx];
-    return sublayer.lyk_style;
+    // Needs optimization
+    NSInteger currentIdx = -1;
+    for (CALayer *sublayer in parentLayer.sublayers) {
+        LYKStyle *style = sublayer.lyk_styleIfExists;
+        
+        if (style != nil) {
+            currentIdx++;
+        }
+        
+        if (currentIdx == idx) {
+            return style;
+        }
+    }
+    
+    return nil;
 }
 
 - (void)handleChangeInLayer:(CALayer *)childLayer rootLayer:(CALayer *)rootLayer
